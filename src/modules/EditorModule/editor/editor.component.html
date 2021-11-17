@@ -1,0 +1,168 @@
+<div class="form-editor">
+  <div class="custom-form p-0 shadow bg-white rounded">
+    <form
+      class="d-flex flex-column justify-content-center align-items-center"
+      [formGroup]="formGroup"
+    >
+      <div
+        class="
+          header-form
+          border-bottom
+          d-flex
+          flex-column
+          justify-content-center
+          text-center
+          position-relative
+          p-3
+          w-100
+          align-items-start
+        "
+      >
+        <h5 class="position-relative p-0 m-0">Create A New Article</h5>
+
+        <button
+          class="
+            btn
+            position-absolute
+            d-flex
+            flex-direction-column
+            justify-content-center
+            align-items-center
+            rounded-circle
+          "
+          (click)="cancelNewArticle()"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="p-3 d-flex flex-column custom-content-form">
+        <div class="infor d-flex align-items-center pt-2 mb-4">
+          <img
+            width="32px"
+            height="32px"
+            class="mr-3 rounded-circle"
+            [src]="imageSrc"
+            alt="avt"
+          />
+          <h6 class="font-weight-bold m-0">{{ userName }}</h6>
+        </div>
+        <div class="mb-4">
+          <label for="titleInput" class="form-label"
+            ><strong>Title:</strong></label
+          >
+          <input
+            type="text"
+            class="form-control input100 shadow-sm bg-white rounded"
+            id="titleInput"
+            formControlName="title"
+          />
+          <span
+            class="text-danger"
+            *ngIf="
+              formGroup.controls.title?.invalid &&
+              formGroup.controls.title.touched
+            "
+            >Bạn cần nhập Title!</span
+          >
+        </div>
+
+        <div class="mb-4">
+          <label for="descriptionInput" class="form-label"
+            ><strong>Description:</strong></label
+          >
+          <input
+            type="text"
+            class="form-control input100 shadow-sm bg-white rounded"
+            id="descriptionInput"
+            formControlName="description"
+          />
+          <span
+            class="text-danger"
+            *ngIf="
+              formGroup.controls.description?.invalid &&
+              formGroup.controls.description.touched
+            "
+            >Bạn cần nhập Description!</span
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="bodyArea"><strong>Body:</strong></label>
+          <!-- <textarea
+            class="form-control shadow-sm bg-white rounded"
+            rows="3"
+            autocomplete="off"
+            id="bodyArea"
+            formControlName="body"
+          ></textarea> -->
+          <!-- <div class="markdown-view d-flex">
+            <textarea
+              class="variable-textarea w-50 ml-3 border rounded"
+              [(ngModel)]="markdown"
+              [ngModelOptions]="{ standalone: true }"
+            ></textarea>
+            <markdown
+              class="variable-binding w-50 ml-4"
+              [data]="markdown"
+            ></markdown>
+          </div> -->
+          <!-- Phần Markdown và view -->
+
+          <!-- Phần hiển thị Markdown -->
+
+          <!-- Phần hiển thị view của Markdown -->
+          <div
+            class="text-danger"
+            *ngIf="
+              formGroup.controls.body?.invalid &&
+              formGroup.controls.body.touched
+            "
+          >
+            Bạn cần nhập Body!
+          </div>
+        </div>
+        <md-editor
+          name="Content"
+          formControlName="body"
+          [height]="'350px'"
+          [mode]="'editor'"
+          required
+          maxlength="5000"
+        >
+        </md-editor>
+
+        <div formArrayName="tags" class="mb-4">
+          <label><strong>Tags:</strong></label>
+          <tag-input
+            [ngModel]="valueOfTags"
+            [ngModelOptions]="{ standalone: true }"
+            (onAdd)="addTags($event)"
+            (onRemove)="removeTags($event)"
+            class="4"
+          ></tag-input>
+        </div>
+        <div
+          class="
+            mb-4
+            d-flex
+            justify-content-center
+            align-items-center align-self-center
+            custom-button-submit
+          "
+        >
+          <button
+            class="btn col-md-6 col-6 text-white bg-primary rounded"
+            [disabled]="!formGroup.valid"
+            type="submit"
+            type="submit"
+            id="submit"
+            (click)="submitArticle()"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

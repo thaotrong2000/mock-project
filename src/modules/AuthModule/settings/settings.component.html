@@ -1,0 +1,133 @@
+<app-navbar [checkLogin]="checkLogin"></app-navbar>
+<div class="setting-page d-flex">
+  <div
+    class="setting-navbar d-flex flex-column shadow-sm p-3 mb-5 border-right"
+  >
+    <h3 class="pt-2 pb-2">Settings Page</h3>
+    <ul class="list-group">
+      <!-- <li
+        class="
+          list-group-item
+          btn btn-light
+          border-white
+          d-flex
+          align-items-center
+        "
+        (click)="checkClick = 1"
+        [ngClass]="{ clickButton: checkClick == 1 }"
+      >
+        <i class="fas fa-palette"></i>&#160;&#160;&#160;
+        <span>Change background</span>
+      </li> -->
+      <!-- <li
+        class="
+          list-group-item
+          btn btn-light
+          border-white
+          d-flex
+          align-items-center
+        "
+      >
+        <i class="fas fa-check"></i>&#160;&#160;&#160;
+        <span>Check Profile</span>
+      </li> -->
+      <li
+        class="
+          list-group-item
+          btn btn-light
+          border-white
+          d-flex
+          align-items-center
+        "
+        (click)="checkClick = 1"
+        [ngClass]="{ clickButton: checkClick == 1 }"
+      >
+        <i class="fas fa-shield-alt"></i>&#160;&#160;&#160;
+        <span>Security</span>
+      </li>
+
+      <li
+        *ngIf="checkLogin"
+        class="
+          list-group-item
+          btn btn-light
+          border-white
+          d-flex
+          align-items-center
+        "
+        (click)="openModal(template)"
+      >
+        <i class="fas fa-sign-out-alt"></i>&#160;&#160;&#160;
+        <span>Log out</span>
+      </li>
+    </ul>
+  </div>
+  <div class="setting-content flex-grow-1 p-3">
+    <div class="check-security">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h3>Security mechanism</h3>
+        </li>
+        <li class="list-group-item d-flex pt-3 pb-3">
+          <p class="m-0 text-secondary">
+            JWT stands for JSON Web Token and it's an open source standard that
+            states how to securely exchange information between computer
+            systems.
+          </p>
+        </li>
+        <li class="list-group-item d-flex pt-3 pb-3">
+          <p class="m-0 text-secondary">
+            A JWT token is simply a compact and self contained JSON object that
+            contains information like email and password.
+          </p>
+        </li>
+        <li class="list-group-item d-flex pt-3 pb-3 text-secondary">
+          <p class="m-0">
+            We use JWT to add authentication in your Angular 8 application
+            without resorting to make use of the traditional mechanisms for
+            implementing authentication in web apps like sessions and cookies.
+          </p>
+        </li>
+        <li class="list-group-item d-flex pt-3 pb-3 text-secondary">
+          <p class="m-0">
+            Here is how JWT works in your web application. First the user is
+            signs in, your web server creates a JWT token for the user's
+            credentials and sends it back to the user's browser. After that, the
+            JWT will be persisted in the browser's local storage and sent with
+            each HTTP request to to the server to be able to access any
+            protected API endpoints.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left text-danger">Logout</h4>
+    <button
+      type="button"
+      class="
+        close
+        pull-right
+        close-button-logout
+        d-flex
+        align-items-center
+        justify-content-center
+        rounded-circle
+      "
+      aria-label="Close"
+      (click)="modalRef.hide()"
+      style="width: 40px; height: 40px"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">This is a sample modal dialog box.</div>
+  <div class="modal-footer border-0">
+    <button type="button" class="btn btn-danger" (click)="logOut()">
+      <i class="fas fa-sign-out-alt"></i>&#160;&#160;Logout
+    </button>
+  </div>
+</ng-template>

@@ -1,0 +1,155 @@
+<app-navbar
+  [checkLogin]="checkLogin"
+  (clickNewArticle)="checkDemo($event)"
+></app-navbar>
+
+<div class="contain d-flex">
+  <!-- Phần hiển thị Articles và Tags - được lấy từ API backend -->
+  <div class="artilce-tag-content d-flex" #someVar>
+    <!-- Phần hiển thị Articles -->
+    <div class="article-content p-2 pl-5 pr-5">
+      <div class="article-content-main" #mainScreen>
+        <ul
+          class="
+            nav nav-tabs
+            bg-white
+            justify-content-start
+            navbar-custom
+            d-flex
+            align-items-center
+            border-0
+          "
+        >
+          <li
+            class="nav-item"
+            *ngIf="checkLogin"
+            (click)="
+              checkStatusFeed = true; whenStatusFeed(); checkClickTag = false
+            "
+            [ngClass]="{
+              'click-feed-global': checkStatusFeed && !checkClickTag
+            }"
+          >
+            <a class="nav-link" href="#">Feed</a>
+          </li>
+          <li
+            class="nav-item mr-auto"
+            (click)="
+              checkStatusFeed = false;
+              whenStatusGlobal();
+              checkContent = 1;
+              checkClickTag = false
+            "
+            [ngClass]="{
+              'click-feed-global': !checkStatusFeed && !checkClickTag
+            }"
+          >
+            <a class="nav-link" href="#">Global</a>
+          </li>
+
+          <!-- Tạo bài viết mới -->
+          <li
+            class="nav-item btn btn-primary h-50 nav-item-create mr-2"
+            *ngIf="checkLogin"
+            routerLink="/editor"
+            (click)="checkClickNew = true"
+          >
+            <a class="nav-link text-light m-0 p-0">Create Article</a>
+          </li>
+        </ul>
+
+        <h4 *ngIf="displaySelectedTag" class="text-primary mt-3">
+          #{{ dataSeletectag }}
+        </h4>
+
+        <div class="display-articles" *ngIf="checkContent == 1">
+          <app-article-home
+            *ngFor="let article of Articles"
+            [article]="article"
+            [title]="article.title"
+            [body]="article.body"
+            [slug]="article.slug"
+            (seeDetails)="seeDetails($event)"
+            [checkLogin]="checkLogin"
+            [userNameCurrent]="userNameCurrent"
+            [tagSelected]="tagSelected"
+            [imgCurrent]="userCurrent?.image"
+            [articlesBehavior]="articlesBehavior"
+            (loginToFollow)="openModal(template)"
+          ></app-article-home>
+        </div>
+
+        <div class="display-news" *ngIf="checkContent == 2">news</div>
+        <div class="display-tags" *ngIf="checkContent == 3">tags</div>
+        <div #demo></div>
+      </div>
+    </div>
+
+    <!-- Phần hiển thị Tags -->
+    <div
+      class="tag-content d-none d-md-block w-25 pl-3 pr-3 pt-0 border shadow-sm"
+    >
+      <div class="tag-content-main d-flex flex-column">
+        <h2 class="text-center mt-3 mb-3">Tags</h2>
+
+        <div class="d-flex flex-wrap">
+          <app-article-tags
+            *ngFor="let tag of tags"
+            [nameTag]="tag"
+            (click)="clickTag(tag)"
+            [checkTag]="checkTag"
+            [tagSelected]="tagSelected"
+          ></app-article-tags>
+        </div>
+        <div></div>
+      </div>
+    </div>
+    <a class="move-top-button btn" (click)="moveTop()"
+      ><i
+        class="fas fa-arrow-circle-up"
+        style="font-size: 2.5rem; color: #5887ef"
+      ></i
+    ></a>
+  </div>
+
+  <!--  -->
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left text-primary">Login</h4>
+    <button
+      type="button"
+      class="
+        close
+        pull-right
+        d-flex
+        align-items-center
+        justify-content-center
+        rounded-circle
+        close-button-login
+      "
+      aria-label="Close"
+      (click)="modalRef.hide()"
+      style="width: 40px; height: 40px"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">Do you want to login to continue?</div>
+  <div class="modal-footer border-0">
+    <button type="button" class="btn btn-primary" (click)="clickToLogin()">
+      <i class="fas fa-sign-in-alt">&#160;&#160;Login</i>
+    </button>
+  </div>
+</ng-template>
+
+<alert *ngIf="checkCreatedSuccess" [type]="typeMsg" [dismissOnTimeout]="'3000'">
+  <strong>Well done!</strong>
+  <p>{{ textMsg }}</p>
+</alert>
+
+<!-- Hiển thị Dialog post article - Chỉ hiển thị khi chuyển sang: /editor -->
+<div [ngClass]="{ 'custom-dialog-create': checkClickNew }" class="p-3">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,12 @@
+<div class="p-2 d-flex align-items-center justify-content-center">
+  <div>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="demoClick()"
+      [ngClass]="{ 'click-tag': clickTag }"
+    >
+      <span>{{ nameTag }}</span>
+    </button>
+  </div>
+</div>

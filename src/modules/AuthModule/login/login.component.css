@@ -1,0 +1,65 @@
+/* Fix login */
+.login {
+  background-color: #f0f2f5;
+  min-height: 100vh;
+  overflow: auto;
+  min-width: 337px;
+}
+
+.login form {
+  width: 25%;
+  border-radius: 15px;
+  margin-top: 7%;
+  margin-right: 5%;
+}
+
+.login input,
+.login button {
+  height: 48px;
+}
+
+ul,
+li {
+  margin: 0px;
+  list-style-type: none;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1110px) {
+  .login-content {
+    width: 85% !important;
+  }
+}
+
+@media only screen and (min-width: 830px) and (max-width: 992px) {
+  .login-content {
+    width: 92% !important;
+  }
+}
+@media only screen and (max-width: 830px) {
+  .login-content {
+    width: 80% !important;
+    flex-direction: column;
+  }
+
+  form {
+    width: 86% !important;
+    padding: 0;
+    margin: 0 !important;
+  }
+
+  .logo-slogan {
+    margin: 0 !important;
+    padding-top: 20px !important;
+    padding-bottom: 30px;
+  }
+
+  .logo-slogan {
+    height: auto !important;
+    width: 86% !important;
+    text-align: center !important;
+  }
+
+  .text-logo {
+    font-size: 3rem !important;
+  }
+}

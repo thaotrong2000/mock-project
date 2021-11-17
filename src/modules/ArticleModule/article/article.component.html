@@ -1,0 +1,179 @@
+<app-navbar [checkLogin]="checkLogin"></app-navbar>
+
+<div class="card pl-5 pt-4 pr-4">
+  <!-- test readmore -->
+  <!-- you HTML goes here -->
+
+  <div
+    class="card-header d-flex align-items-center custom-card"
+    style="height: 60px"
+  >
+    <div class="avatar-person" style="width: 38px; height: 38px">
+      <img [src]="srcImage" class="mh-100 mw-100 custom-image-avatar" alt="" />
+    </div>
+    &#160;&#160;&#160;
+    <div class="infor-user d-flex flex-column mr-auto">
+      <div class="d-flex align-items-center">
+        <span
+          ><strong>{{ nameAuthor }}</strong></span
+        >
+        <button
+          *ngIf="userNameCurrent != nameAuthor"
+          style="color: #59afff"
+          class="
+            follow-use
+            ml-4
+            btn btn-primary
+            text-light
+            d-flex
+            align-items-center
+            p-2
+          "
+          (click)="followUsername()"
+        >
+          <span *ngIf="!following"
+            ><i class="fas fa-plus"></i>&#160;Follow</span
+          >
+          <span *ngIf="following">Following</span>
+        </button>
+      </div>
+
+      <div class="d-flex align-items-center mt-2">
+        <span class="text-muted hour-post"
+          >1 giờ &#160;<i class="fas fa-globe-americas"></i
+        ></span>
+        <span class="count-comment ml-2 text-muted">
+          Comments: {{ commentsArr.length }}</span
+        >
+      </div>
+    </div>
+
+    <div *ngIf="userNameCurrent == nameAuthor" class="dropdown show">
+      <a
+        class="btn"
+        href="#"
+        role="button"
+        id="dropdownMenuLink"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="fas fa-ellipsis-h"></i>
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a
+          *ngIf="userNameCurrent == nameAuthor"
+          class="dropdown-item rounded"
+          (click)="deleteArticle()"
+          style="cursor: pointer"
+          ><i class="fas fa-trash-alt"></i>&#160;&#160;Delete article
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="card-body pb-1">
+    <h3 class="card-title">&bull;Title: {{ title }}</h3>
+    <p style="font-size: 0.85rem">
+      &middot; description:&#160; {{ description }}
+    </p>
+    <div
+      class="border rounded mt-3 mb-3"
+      style="height: 8px; background-color: #ccc"
+    ></div>
+
+    <markdown
+      class="variable-binding w-50 ml-4 card-text"
+      [data]="body"
+    ></markdown>
+  </div>
+  <div class="pl-3">
+    <span class="text-primary" *ngFor="let tags of tag"
+      >#<span>{{ tags }}</span
+      >&#160;</span
+    >
+  </div>
+
+  <div class="card-reaction d-flex justify-content-around mt-3 p-1">
+    <button
+      class="btn"
+      (click)="favorited = !favorited"
+      (click)="likeArticle()"
+    >
+      <i
+        class="fa-heart"
+        [ngClass]="{
+          'fas like': favorited,
+          far: !favorited
+        }"
+        >&#160;</i
+      ><span [ngClass]="{ clickLike: favorited }">Favorite</span>
+    </button>
+    <button class="btn" [ngClass]="{ 'show-comment': !showComment }">
+      <i class="far fa-comment-alt">&#160;</i>Comment
+    </button>
+  </div>
+  <div class="comment">
+    <div class="add-comment d-flex" *ngIf="checkLogin">
+      <img
+        alt="avt"
+        class="avt-comment"
+        width="40px"
+        height="40px"
+        [src]="srcImage"
+      />
+      <input
+        class="input-comment body-comment"
+        type="text"
+        placeholder="Enter your comment ..."
+        (keyup.enter)="onEnterComment($event)"
+        [(ngModel)]="valueComment"
+      />
+    </div>
+    <ul class="list-comment" *ngFor="let comment of commentsArr">
+      <li class="card-comment d-flex">
+        <img
+          class="avt-comment"
+          width="40px"
+          height="40px"
+          [src]="comment.srcImg"
+          alt="avt"
+        />
+        <div class="body-comment">
+          <p class="font-weight-bold p-0 m-0">
+            {{ comment.author.username }}
+          </p>
+          <p class="m-0 p-0">{{ comment.body }}</p>
+        </div>
+        <div
+          *ngIf="userNameCurrent == comment.author.username"
+          class="dots d-flex align-items-center"
+        >
+          <div class="dropdown">
+            <i
+              class="fas fa-ellipsis-h btn"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            ></i>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a
+                class="dropdown-item"
+                *ngIf="userNameCurrent == comment.author.username"
+                style="cursor: pointer"
+                (click)="checkDeleteComment(comment)"
+              >
+                <i class="fas fa-trash-alt"></i>&#160;&#160;Delete comment
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Cmt -->
+</div>

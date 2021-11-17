@@ -1,0 +1,161 @@
+<nav class="navbar navbar-expand navbar-custom border shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/"
+      ><h4 class="p-0 m-0" style="color: #3f77f3">
+        <strong>RealWorld</strong>
+      </h4></a
+    >
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <!-- Hiển thị khi kích thước màn hình nhỏ -->
+      <div ngbDropdown class="d-block d-md-none">
+        <div
+          class="menu d-block d-md-none text-light"
+          id="dropdownConfig"
+          ngbDropdownToggle
+        >
+          <i class="fas fa-bars"></i>
+        </div>
+        <div
+          ngbDropdownMenu
+          aria-labelledby="dropdownConfig"
+          class="p-0 dropdownConfig"
+        >
+          <a
+            ngbDropdownItem
+            class="nav-link d-block d-md-none"
+            aria-current="page"
+            href="#"
+            placement="left"
+            ngbTooltip="Home"
+            routerLink="/"
+            ><i class="fas fa-home d-block d-md-none"></i>
+          </a>
+          <a
+            *ngIf="!checkLogin"
+            ngbDropdownItem
+            class="nav-link d-block d-md-none"
+            routerLink="/login"
+            placement="left"
+            ngbTooltip="Login"
+          >
+            <i class="fas fa-sign-in-alt d-block d-md-none"></i>
+          </a>
+          <a
+            *ngIf="!checkLogin"
+            ngbDropdownItem
+            class="nav-link d-block d-md-none"
+            routerLink="/register"
+            placement="left"
+            ngbTooltip="Register"
+          >
+            <i class="fas fa-user-plus d-block d-md-none"></i>
+          </a>
+
+          <a
+            *ngIf="checkLogin"
+            ngbDropdownItem
+            class="nav-link d-block d-md-none"
+            routerLink="/profile/{{ user?.username }}"
+            placement="left"
+            ngbTooltip="Profile"
+          >
+            <i class="fas fa-user-circle d-block d-md-none"></i>
+          </a>
+
+          <a
+            *ngIf="checkLogin"
+            ngbDropdownItem
+            class="nav-link d-block d-md-none"
+            routerLink="/settings"
+            placement="left"
+            ngbTooltip="Settings"
+          >
+            <i class="fas fa-cog d-block d-md-none"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hiển thị khi kích thước màn hình lớn -->
+      <ul class="navbar-nav d-none d-md-flex">
+        <li class="nav-item" [ngClass]="{ clickSeleted: checkUrl == '/' }">
+          <a
+            class="
+              nav-link
+              active
+              d-flex
+              align-items-center
+              justify-content-center
+            "
+            aria-current="page"
+            href="#"
+            placement="bottom"
+            ngbTooltip="Home"
+            routerLink="/"
+          >
+            <i class="fas fa-home d-none d-sm-block"></i>
+          </a>
+        </li>
+        <li
+          *ngIf="!checkLogin"
+          class="nav-item"
+          [ngClass]="{ clickSeleted: checkUrl == '/login' }"
+        >
+          <a
+            class="nav-link d-flex align-items-center justify-content-center"
+            routerLink="/login"
+            placement="bottom"
+            ngbTooltip="Login"
+          >
+            <i class="fas fa-sign-in-alt d-none d-sm-block"></i>
+          </a>
+        </li>
+        <li *ngIf="!checkLogin" class="nav-item">
+          <a
+            class="nav-link d-flex align-items-center justify-content-center"
+            routerLink="/register"
+            placement="bottom"
+            ngbTooltip="Register"
+          >
+            <i class="fas fa-user-plus d-none d-sm-block"></i>
+          </a>
+        </li>
+        <li
+          *ngIf="checkLogin"
+          class="nav-item"
+          [ngClass]="{ clickSeleted: checkUrl.includes('/profile') }"
+        >
+          <a
+            class="nav-link d-flex align-items-center justify-content-center"
+            routerLink="/profile/{{ user?.username }}"
+            placement="bottom"
+            ngbTooltip="Profile"
+          >
+            <i class="fas fa-user-circle d-none d-sm-block"></i>
+          </a>
+        </li>
+        <li
+          class="nav-item"
+          [ngClass]="{ clickSeleted: checkUrl == '/settings' }"
+        >
+          <a
+            class="nav-link d-flex justify-content-center d-flex"
+            href="#"
+            placement="bottom"
+            ngbTooltip="Setting page"
+            routerLink="/settings"
+            ><i class="fas fa-cog"></i
+          ></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

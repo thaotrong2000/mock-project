@@ -1,0 +1,66 @@
+.setting {
+  height: 100vh;
+}
+
+.setting-page {
+  margin-top: 56px;
+  height: calc(100vh - 56px);
+  width: 100%;
+}
+
+.setting-navbar {
+  min-width: 320px;
+  height: 100%;
+  background: #ffffff;
+}
+
+ul.list-group li {
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1.0625rem;
+}
+
+.clickButton {
+  color: #212529;
+  background-color: #e2e6ea;
+}
+
+.color-blue {
+  color: #5899e8;
+}
+
+.color-pink {
+  color: #ec82ac;
+}
+
+.color-vintage {
+  color: #f3c272;
+}
+
+.close-button-logout {
+  position: relative;
+  top: 10px;
+  right: 10px;
+  background-color: #e4e6eb;
+}
+
+@media (max-width: 992px) {
+  .setting-navbar {
+    min-width: 320px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .setting-navbar {
+    min-width: 32% !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .setting-page {
+    min-width: 500px;
+  }
+  .setting-navbar {
+    min-width: 42% !important;
+  }
+}

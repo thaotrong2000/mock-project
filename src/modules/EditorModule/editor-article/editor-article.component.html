@@ -1,0 +1,174 @@
+<div class="form-editor">
+  <div class="custom-form p-0 shadow bg-white rounded">
+    <form
+      class="d-flex flex-column justify-content-center align-items-center"
+      [formGroup]="formGroup"
+    >
+      <div
+        class="
+          header-form
+          border-bottom
+          d-flex
+          flex-column
+          justify-content-center
+          text-center
+          position-relative
+          p-3
+          w-100
+          align-items-start
+        "
+      >
+        <h5 class="position-relative p-0 m-0">Create A New Article</h5>
+
+        <button
+          class="
+            btn
+            position-absolute
+            d-flex
+            flex-direction-column
+            justify-content-center
+            align-items-center
+            rounded-circle
+          "
+          (click)="cancelNewArticle()"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="p-3 d-flex flex-column custom-content-form">
+        <div class="infor d-flex align-items-center pt-2 mb-4">
+          <img
+            width="32px"
+            height="32px"
+            class="mr-3 rounded-circle"
+            src="data:image/jpeg;base64,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"
+            alt="avt"
+          />
+          <h6 class="font-weight-bold m-0">{{ userName }}</h6>
+        </div>
+        <div class="mb-4">
+          <label for="titleInput" class="form-label"
+            ><strong>Title:<span class="text-danger">*</span></strong></label
+          >
+          <input
+            type="text"
+            class="form-control input100 shadow-sm bg-white rounded"
+            id="titleInput"
+            formControlName="title"
+          />
+          <span
+            class="text-danger"
+            *ngIf="
+              formGroup.controls.title?.invalid &&
+              formGroup.controls.title.touched
+            "
+            >Bạn cần nhập Title!</span
+          >
+        </div>
+
+        <div class="mb-4">
+          <label for="descriptionInput" class="form-label"
+            ><strong
+              >Description:<span class="text-danger">*</span></strong
+            ></label
+          >
+          <input
+            type="text"
+            class="form-control input100 shadow-sm bg-white rounded"
+            id="descriptionInput"
+            formControlName="description"
+          />
+          <span
+            class="text-danger"
+            *ngIf="
+              formGroup.controls.description?.invalid &&
+              formGroup.controls.description.touched
+            "
+            >Bạn cần nhập Description!</span
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="bodyArea"
+            ><strong>Body:<span class="text-danger">*</span></strong></label
+          >
+          <!-- <textarea
+            class="form-control shadow-sm bg-white rounded"
+            rows="3"
+            autocomplete="off"
+            id="bodyArea"
+            formControlName="body"
+          ></textarea> -->
+          <!-- <div class="markdown-view d-flex">
+            <textarea
+              class="variable-textarea w-50 ml-3 border rounded"
+              [(ngModel)]="markdown"
+              [ngModelOptions]="{ standalone: true }"
+            ></textarea>
+            <markdown
+              class="variable-binding w-50 ml-4"
+              [data]="markdown"
+            ></markdown>
+          </div> -->
+          <!-- Phần Markdown và view -->
+
+          <!-- Phần hiển thị Markdown -->
+
+          <!-- Phần hiển thị view của Markdown -->
+          <div
+            class="text-danger"
+            *ngIf="
+              formGroup.controls.body?.invalid &&
+              formGroup.controls.body.touched
+            "
+          >
+            Bạn cần nhập Body!
+          </div>
+          <md-editor
+            name="Content"
+            formControlName="body"
+            [height]="'350px'"
+            [mode]="'editor'"
+            required
+            maxlength="5000"
+          >
+          </md-editor>
+        </div>
+
+        <div formArrayName="tags" class="mb-4">
+          <label
+            ><strong>Tags:<span class="text-danger">*</span></strong></label
+          >
+          <tag-input
+            [ngModel]="valueOfTags"
+            [ngModelOptions]="{ standalone: true }"
+            (onAdd)="addTags($event)"
+            (onRemove)="removeTags($event)"
+            class="4"
+          ></tag-input>
+        </div>
+        <div
+          class="
+            mb-4
+            d-flex
+            justify-content-center
+            align-items-center align-self-center
+            custom-button-submit
+          "
+        >
+          <button
+            class="btn col-md-6 col-6 text-white bg-primary rounded"
+            [disabled]="!formGroup.valid"
+            type="submit"
+            type="submit"
+            id="submit"
+            (click)="submitArticle()"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

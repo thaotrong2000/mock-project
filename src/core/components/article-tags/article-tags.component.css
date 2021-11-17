@@ -1,0 +1,21 @@
+button {
+  background-color: hsl(228, 47%, 90%);
+  border-radius: 25px;
+  color: #000;
+  border: none;
+}
+
+.click-tag {
+  color: #fff !important;
+  background-color: #5a6268 !important;
+  border-color: #545b62 !important;
+  box-shadow: 0 0 0 0.02rem rgb(130 138 145 / 50%) !important;
+}
+
+.btn-secondary:focus,
+.btn-secondary.focus {
+  color: #000;
+  background-color: hsl(230deg 45% 90%);
+  border: none;
+  box-shadow: none;
+}

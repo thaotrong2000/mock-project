@@ -1,0 +1,11 @@
+<div [ngClass]="{ collapsed: isCollapsed }">
+  <ng-content></ng-content>
+</div>
+<div (click)="isCollapsed = !isCollapsed" class="pl-3">
+  <a style="cursor: pointer"
+    ><u
+      ><i *ngIf="isCollapsed">Read more</i>
+      <i *ngIf="!isCollapsed">Read less</i></u
+    ></a
+  >
+</div>

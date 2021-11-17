@@ -1,0 +1,42 @@
+.container {
+  border-radius: 10px;
+}
+
+.custom-form {
+}
+
+.form-editor {
+}
+
+.position-absolute {
+  right: 10px;
+  background-color: #e4e6eb;
+  width: 40px;
+  height: 40px;
+}
+
+.fa-times {
+  font-size: 25px;
+  opacity: 0.6;
+}
+
+.input100 {
+  height: 6vh;
+}
+
+.header-form {
+  background-color: #f2f3f5;
+  border-radius: 10px 10px 0 0;
+}
+
+.custom-content-form {
+  width: 90%;
+}
+
+.custom-button-submit {
+  width: 35%;
+}
+
+.custom-button-submit button {
+  height: 44px;
+}

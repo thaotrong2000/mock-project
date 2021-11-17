@@ -1,0 +1,122 @@
+.card {
+  margin-top: 56px;
+  border-radius: 6px;
+  border: none;
+}
+
+.card-header {
+  border-radius: 6px;
+  border: none;
+  margin-top: 10px;
+}
+
+.card-body p {
+  font-size: 1.2rem;
+}
+
+.infor-user {
+  font-size: 1.1rem;
+}
+
+.custom-image-avatar {
+  height: 36px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.hour-post {
+  font-size: 0.85rem;
+}
+
+.custom-card {
+  background-color: #fff;
+}
+
+.card-reaction {
+  border-top: 1px solid #ccc;
+}
+
+.card-reaction button {
+  font-size: 1.2rem;
+}
+
+.follow-user {
+  cursor: pointer;
+}
+
+.like {
+  color: red;
+}
+
+.clickLike {
+  color: blue;
+}
+
+.btn {
+  box-shadow: none;
+}
+
+.comment {
+  padding-top: 15px;
+  border-top: 1px solid #ccc;
+}
+
+.list-comment {
+  list-style: none;
+}
+
+.avt-comment {
+  border-radius: 50%;
+}
+
+.body-comment {
+  background: #f0f2f5;
+  margin-left: 5px;
+  border-radius: 20px;
+  padding: 5px 20px;
+}
+
+.body-comment p {
+  font-size: 14px;
+}
+
+.body-comment:hover .dots {
+  background: red;
+}
+
+.dots {
+  margin-left: 7px;
+  color: rgb(35, 33, 33);
+  font-size: 14px;
+}
+
+.add-comment {
+  margin-bottom: 15px;
+}
+
+.input-comment {
+  width: 100%;
+  outline: none;
+  border: none;
+}
+
+.follow-use {
+  font-size: 0.84rem;
+  border-radius: 10px;
+  height: 24px;
+}
+
+.count-comment {
+  font-size: 0.85rem;
+}
+
+.dropdown-menu {
+  left: -75px !important;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  color: #16181b;
+  text-decoration: none;
+  background-color: #e9ecef;
+}
