@@ -5,9 +5,9 @@
 
 <div class="contain d-flex">
   <!-- Phần hiển thị Articles và Tags - được lấy từ API backend -->
-  <div class="artilce-tag-content d-flex" #someVar>
+  <div class="artilce-tag-content d-flex overflow-auto flex-fill" #someVar>
     <!-- Phần hiển thị Articles -->
-    <div class="article-content p-2 pl-5 pr-5">
+    <div class="article-content w-75 p-2 pl-5 pr-5">
       <div class="article-content-main" #mainScreen>
         <ul
           class="
@@ -87,7 +87,18 @@
 
     <!-- Phần hiển thị Tags -->
     <div
-      class="tag-content d-none d-md-block w-25 pl-3 pr-3 pt-0 border shadow-sm"
+      class="
+        tag-content
+        position-sticky
+        d-none d-md-block
+        w-25
+        pl-3
+        pr-3
+        pt-0
+        border
+        shadow-sm
+        sticky-top
+      "
     >
       <div class="tag-content-main d-flex flex-column">
         <h2 class="text-center mt-3 mb-3">Tags</h2>

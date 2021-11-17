@@ -1,73 +1,40 @@
 /* Phần chứa toàn bộ nội dung Home */
-
 .contain {
   width: 100%;
   height: calc(100vh - 56px);
   position: relative;
   top: 56px;
 }
-
-/* Phần News - lấy từ API bên ngoài */
-
-.news-content {
-  height: calc(100vh - 56px);
-  overflow: auto;
-  width: 20%;
-  background-color: #fff;
-}
-
 /* Phần nội dung Article - Tag : lấy từ backend */
-
 /* Phần chung chứa toàn bộ thông tin này */
-
 .artilce-tag-content {
-  flex: 1;
-  overflow-y: scroll;
   background-color: #f0f2f5;
   padding-left: 12% !important;
   padding-right: 12% !important;
 }
-
 /* Phần nội dung Articles : phần bài viết */
-
 .article-content {
   background-color: #f0f2f5;
-  width: 75%;
-  height: 100%;
 }
-
-/* Phần nội dung các Tags */
-
-.tag-content {
-  position: sticky;
-  top: 0;
-}
-
 /* Custom các thẻ khác */
-
 .nav-item strong {
   font-size: 1.5rem;
 }
-
 .navbar-custom {
   background-color: #f0f2f5 !important;
   border-radius: 6px;
 }
-
 .hastag {
   background-color: #56a3e3;
   align-self: center;
   width: 55%;
 }
-
 .click-feed-global {
   border-bottom: 4px solid #3f77f3;
 }
-
 .nav-link {
   border: none;
 }
-
 @media screen and (max-width: 768px) {
   .artilce-tag-content {
     width: 100%;
@@ -79,7 +46,6 @@
     width: 100%;
   }
 }
-
 .dialog-custom {
   position: fixed;
   top: 0;
@@ -89,7 +55,6 @@
   background-color: black;
   opacity: 0.6;
 }
-
 .custom {
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 10;
@@ -99,45 +64,32 @@
   left: 0;
   bottom: 0;
 }
-
-/* Custom Scroll */
-
 .news-content::-webkit-scrollbar {
   width: 0.4rem;
 }
-
 .news-content::-webkit-scrollbar-thumb {
   background-color: rgba(75, 70, 70, 0.4);
   border-radius: 3px;
 }
-
 .news-content::-webkit-scrollbar-track {
   background: transparent;
 }
-
 /*  Scroll - content */
-
 ::-webkit-scrollbar {
   width: 0.6rem;
 }
-
 ::-webkit-scrollbar-thumb {
   background-color: rgba(75, 70, 70, 0.4);
   border-radius: 3px;
 }
-
 ::-webkit-scrollbar-track {
   background: transparent;
 }
-
 .toidemo {
   width: 50%;
   height: 80vh;
   overflow: scroll;
 }
-
-/* Custom Dialog Create Article */
-
 .custom-dialog-create {
   background-color: rgba(0, 0, 0, 0.6);
   overflow: auto;
@@ -148,16 +100,13 @@
   left: 0;
   bottom: 0;
 }
-
 .nav-link {
   font-weight: 400;
   font-size: 1.2rem;
 }
-
 .nav-item-create {
   border-radius: 19px;
 }
-
 alert {
   position: fixed;
   top: 10px;
@@ -165,25 +114,21 @@ alert {
   z-index: 9999;
   transform: translate(-50%, 0);
 }
-
 .move-top-button {
   position: fixed;
   right: 0;
   bottom: 10px;
 }
-
 .confirm-login {
   position: fixed;
   top: 56px;
 }
-
 .close-button-login {
   position: relative;
   top: 10px;
   right: 10px;
   background-color: #e4e6eb;
 }
-
 @media (max-width: 992px) {
   .artilce-tag-content {
     padding-left: 6% !important;
@@ -194,7 +139,6 @@ alert {
     padding-right: 20px !important;
   }
 }
-
 @media (max-width: 576px) {
   .artilce-tag-content {
     padding-left: 1% !important;
