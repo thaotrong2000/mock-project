@@ -66,12 +66,9 @@
           <app-article-home
             *ngFor="let article of Articles"
             [article]="article"
-            [title]="article.title"
-            [body]="article.body"
-            [slug]="article.slug"
             (seeDetails)="seeDetails($event)"
             [checkLogin]="checkLogin"
-            [userNameCurrent]="userNameCurrent"
+            [userNameCurrent]="userCurrent?.username"
             [tagSelected]="tagSelected"
             [imgCurrent]="userCurrent?.image"
             [articlesBehavior]="articlesBehavior"

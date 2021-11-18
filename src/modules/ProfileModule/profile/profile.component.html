@@ -152,9 +152,6 @@
       <app-article-home
         *ngFor="let article of myListArticles"
         [article]="article"
-        [title]="article.title"
-        [body]="article.body"
-        [slug]="article.slug"
         (seeDetails)="seeDetails($event)"
         [checkLogin]="checkLogin"
         [userNameCurrent]="currentUser"
@@ -166,9 +163,6 @@
       <app-article-home
         *ngFor="let article of myListFavoriteArticles"
         [article]="article"
-        [title]="article.title"
-        [body]="article.body"
-        [slug]="article.slug"
         (seeDetails)="seeDetails($event)"
         [checkLogin]="checkLogin"
         [userNameCurrent]="currentUser"

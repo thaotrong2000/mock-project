@@ -14,9 +14,7 @@ import { ProfileService } from 'src/services/ProfileService/profile.service';
 })
 export class ArticleHomeComponent implements OnInit {
   @Input() article: any = [];
-  @Input() body: string = '';
 
-  @Input() slug: string = '';
   @Input() checkLogin: boolean = false;
   @Input() userNameCurrent: string = '';
   @Input() tagSelected: BehaviorSubject<string> = new BehaviorSubject('');
@@ -49,38 +47,51 @@ export class ArticleHomeComponent implements OnInit {
   ngOnInit(): void {
     this.getAllComment();
 
-    if (this.body.length > 50) {
+    if (this.article.body.length > 50) {
       this.checkReadLong = true;
-      this.customBody = this.body.slice(0, 50);
+      this.customBody = this.article.body.slice(0, 50);
     } else {
       this.checkReadLong = false;
-      this.customBody = this.body;
+      this.customBody = this.article.body;
     }
     console.log();
   }
 
+  /**
+   * When click comment - get all comment
+   * */
   public whenClickComment(): void {
     this.getAllComment();
   }
 
+  /**
+   * Get all comment of this article
+   * */
   public getAllComment() {
-    this.cmtService.getCommentFromArticle(this.slug).subscribe((comments) => {
-      this.commentsArr = comments.comments;
-      for (const comment in this.commentsArr) {
-        this.profileService
-          .getProfileByUser(this.commentsArr[comment].author.username)
-          .subscribe((data) => {
-            this.commentsArr[comment].srcImg = data.profile.image;
-          });
-      }
-    });
+    this.cmtService
+      .getCommentFromArticle(this.article.slug)
+      .subscribe((comments) => {
+        this.commentsArr = comments.comments;
+        for (const comment in this.commentsArr) {
+          this.profileService
+            .getProfileByUser(this.commentsArr[comment].author.username)
+            .subscribe((data) => {
+              this.commentsArr[comment].srcImg = data.profile.image;
+            });
+        }
+      });
   }
 
+  /**
+   * When click enter - this comment will sent
+   * */
   public onEnterComment(event: any): void {
-    console.log('slug', this.slug);
+    console.log('slug', this.article.slug);
 
     this.cmtService
-      .createComment(this.slug, { comment: { body: event.target.value } })
+      .createComment(this.article.slug, {
+        comment: { body: event.target.value },
+      })
       .subscribe((comments) => {
         console.log('new cmt', comments);
         this.getAllComment();
@@ -93,9 +104,11 @@ export class ArticleHomeComponent implements OnInit {
   }
 
   deleteComment(comment: any) {
-    this.cmtService.deleteComment(this.slug, comment).subscribe((data) => {
-      this.getAllComment();
-    });
+    this.cmtService
+      .deleteComment(this.article.slug, comment)
+      .subscribe((data) => {
+        this.getAllComment();
+      });
   }
 
   public followUsername(): void {
@@ -134,14 +147,16 @@ export class ArticleHomeComponent implements OnInit {
       if (this.article.favorited) {
         this.article.favoritesCount++;
         this.articleService
-          .favoriteArticle(this.slug)
+          .favoriteArticle(this.article.slug)
           .subscribe((data) => console.log(data));
       } else {
         this.article.favoritesCount--;
 
-        this.articleService.unfavoriteArticle(this.slug).subscribe((data) => {
-          console.log(data);
-        });
+        this.articleService
+          .unfavoriteArticle(this.article.slug)
+          .subscribe((data) => {
+            console.log(data);
+          });
       }
     }
   }
@@ -153,7 +168,7 @@ export class ArticleHomeComponent implements OnInit {
   public checkDeleteComment(comment: any) {
     console.log(comment);
     this.cmtService
-      .deleteComment(this.slug, comment._id)
+      .deleteComment(this.article.slug, comment._id)
       .subscribe((data) => this.getAllComment());
   }
 

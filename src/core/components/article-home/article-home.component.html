@@ -4,7 +4,9 @@
     style="height: 60px"
   >
     <div class="avatar-person" style="width: 38px; height: 38px">
-      <img width="100%" height="100%"
+      <img
+        width="100%"
+        height="100%"
         [routerLink]="['profile', article.author.username]"
         [src]="article.author.image"
         class="mh-100 mw-100 custom-image-avatar"
@@ -65,7 +67,7 @@
       <div class="dropdown-menu pl-2 pr-2" aria-labelledby="dropdownMenuLink">
         <a
           class="dropdown-item rounded"
-          [routerLink]="['/article/', slug]"
+          [routerLink]="['/article/', article.slug]"
           style="cursor: pointer"
           ><i class="fas fa-info-circle"></i>&#160;&#160;See details</a
         >
@@ -73,7 +75,7 @@
           *ngIf="checkLogin && userNameCurrent == article.author.username"
           class="dropdown-item rounded"
           (click)="clickSeeDeatils()"
-          [routerLink]="['/editor/', slug]"
+          [routerLink]="['/editor/', article.slug]"
           style="cursor: pointer"
           ><i class="fas fa-edit"></i>&#160;&#160;Edit article</a
         >

@@ -46,8 +46,6 @@ export class HomeComponent
 
   Articles: Array<Article> = new Array<Article>();
 
-  paginationArticle: any = [];
-
   checkLogin: boolean = false;
 
   checkStatusFeed: any = false;
@@ -57,8 +55,6 @@ export class HomeComponent
   checkClickNew: boolean = false;
 
   checkContent: number = 1;
-
-  userNameCurrent: string = '';
 
   userCurrent: any;
 
@@ -95,9 +91,6 @@ export class HomeComponent
     private modalService: BsModalService,
     private cdRef: ChangeDetectorRef
   ) {}
-  ngOnDestroy(): void {
-    this.storeService.setCreateArticleSuccess({ status: false, text: '' });
-  }
 
   ngOnInit(): void {
     this.checkStatusLogin();
@@ -128,7 +121,6 @@ export class HomeComponent
     });
 
     this.loginService.getCurrenUser().subscribe((data) => {
-      this.userNameCurrent = data.user.username;
       this.userCurrent = data.user;
     });
 
@@ -192,6 +184,10 @@ export class HomeComponent
     this.cdRef.detectChanges();
   }
 
+  ngOnDestroy(): void {
+    this.storeService.setCreateArticleSuccess({ status: false, text: '' });
+  }
+
   /**
    * Khi chọn trạng thái là Global
    * Created by: THAONT119
@@ -205,8 +201,7 @@ export class HomeComponent
     this.articleService
       .getArticleLimitAndOffset(this.limit, this.offset)
       .subscribe((articles) => {
-        this.Articles = articles.articles;
-        console.log(this.Articles);
+        this.Articles = articles?.articles;
       });
 
     this.checkStatusFeed = false;
@@ -236,14 +231,13 @@ export class HomeComponent
     this.articleService
       .getArticleFeedByLimitAndOffset(this.limit, this.offset)
       .subscribe((data) => {
-        console.log(data);
         this.Articles = data.articles;
       });
   }
 
   /**
    * Xử lý sự kiện: Load thêm dữ liệu khi kéo đến cuối trang
-   * Created by: THAONT119 && GIANGNT67
+   * Created by: THAONT119
    * */
   public onScroll() {
     // Cộng thêm 56 - vì 56 là chiều cao cố định của Navbar

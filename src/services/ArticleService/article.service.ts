@@ -48,7 +48,7 @@ export class ArticleService {
   }
 
   getArticleLimitAndOffset(limit: number, offset: number): Observable<any> {
-    return this.http.get<Article[]>(
+    return this.http.get<Object>(
       this.baseUrl + `/articles?limit=${limit}&&offset=${offset}`
     );
   }
