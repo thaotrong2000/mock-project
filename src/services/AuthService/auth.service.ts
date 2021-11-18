@@ -9,6 +9,9 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   public getToken(inforLogin: any): Observable<any> {
-    return this.http.post('http://localhost:3000/api/users/login', inforLogin);
+    return this.http.post(
+      'https://mock-project-trongthao.herokuapp.com/api',
+      inforLogin
+    );
   }
 }

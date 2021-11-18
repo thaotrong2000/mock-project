@@ -13,7 +13,7 @@ export class LoginService {
 
   user: any = {};
 
-  baseUrl = 'http://localhost:3000/api';
+  baseUrl = 'https://mock-project-trongthao.herokuapp.com/api';
 
   check: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 

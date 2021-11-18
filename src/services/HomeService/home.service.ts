@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class HomeService {
-  baseUrl = 'http://localhost:3000/api';
+  baseUrl = 'https://mock-project-trongthao.herokuapp.com/api';
 
   constructor(private readonly http: HttpClient) {}
 
