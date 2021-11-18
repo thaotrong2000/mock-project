@@ -132,7 +132,7 @@
           far: !article.favorited
         }"
         >&#160;</i
-      >
+      ><span [ngClass]="{ clickLike: article.favorited }">Like</span>
     </button>
     <button
       class="btn"
