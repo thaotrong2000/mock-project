@@ -148,15 +148,13 @@ export class ArticleHomeComponent implements OnInit {
         this.article.favoritesCount++;
         this.articleService
           .favoriteArticle(this.article.slug)
-          .subscribe((data) => console.log(data));
+          .subscribe((data) => {});
       } else {
         this.article.favoritesCount--;
 
         this.articleService
           .unfavoriteArticle(this.article.slug)
-          .subscribe((data) => {
-            console.log(data);
-          });
+          .subscribe((data) => {});
       }
     }
   }
