@@ -10,7 +10,7 @@ export class AuthService {
 
   public getToken(inforLogin: any): Observable<any> {
     return this.http.post(
-      'https://mock-project-trongthao.herokuapp.com/api',
+      'https://mock-project-trongthao.herokuapp.com/api/users/login',
       inforLogin
     );
   }
